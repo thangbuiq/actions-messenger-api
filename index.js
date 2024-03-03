@@ -4,5 +4,5 @@ const credentials = { appState: JSON.parse(fs.readFileSync("appstate.json", "utf
 
 login(credentials, (err, api) => {
   if (err) return console.error(err);
-  api.sendMessage("[BOT] Nhớ uống nước nhen uống bây giờ đi á!", process.env.THREAD_ID);
+  api.sendMessage("[BOT 🐮] Nhớ uống nước nhen uống bây giờ đi á!", process.env.THREAD_ID);
 });

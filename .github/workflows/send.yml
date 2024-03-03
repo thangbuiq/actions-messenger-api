@@ -18,9 +18,8 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Import environment variables
+      - name: Create appstate.json
         run: |
-          export THREAD_ID=${{ secrets.THREAD_ID }}
           export APPSTATE='${{ secrets.APPSTATE }}'
           echo $APPSTATE > appstate.json
 
@@ -28,4 +27,6 @@ jobs:
         run: npm ci
 
       - name: Run script
-        run: npm run send
+        run: |
+          export THREAD_ID=${{ secrets.THREAD_ID }}  
+          npm run send
