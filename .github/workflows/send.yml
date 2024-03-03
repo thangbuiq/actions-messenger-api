@@ -1,0 +1,31 @@
+name: Schedule Job
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */3 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Import environment variables
+        run: |
+          export THREAD_ID='${{ secrets.THREAD_ID }}'
+          export APPSTATE='${{ secrets.APPSTATE }}'
+          echo $APPSTATE > appstate.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run script
+        run: node src/index.js
