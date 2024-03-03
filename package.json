@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "facebook-chat-api": "^1.8.0"
+  },
+  "scripts": {
+    "send": "node index.js"
   }
 }
