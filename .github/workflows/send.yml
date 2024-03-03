@@ -1,4 +1,4 @@
-name: Schedule Job
+name: Send Message
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: "0 */3 * * *"
 
 jobs:
-  build:
+  send:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Import environment variables
         run: |
-          export THREAD_ID='${{ secrets.THREAD_ID }}'
+          export THREAD_ID=${{ secrets.THREAD_ID }}
           export APPSTATE='${{ secrets.APPSTATE }}'
           echo $APPSTATE > appstate.json
 
